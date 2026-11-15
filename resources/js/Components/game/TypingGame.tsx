@@ -1,6 +1,5 @@
-import { GRADE_LABELS } from '@/lib/customize/words';
 import { GameState } from '@/lib/judge';
-import { Link } from '@inertiajs/react';
+import GamePageHeader from './GamePageHeader';
 import Timer from './Timer';
 
 export default function TypingGame({ state }: { state: GameState }) {
@@ -9,12 +8,7 @@ export default function TypingGame({ state }: { state: GameState }) {
 
     return (
         <div>
-            <div className="flex w-full items-center justify-between border-b-2 border-gray-700 px-12 py-4">
-                <Link href="/" className="text-2xl font-bold tracking-widest">
-                    WORD LEARNER
-                </Link>
-                <p className="text-xl">{GRADE_LABELS[state.grade]}</p>
-            </div>
+            <GamePageHeader grade={state.grade} />
 
             <div className="mx-auto max-w-xl px-6 py-10 text-center">
                 <Timer remainingMs={state.remainingMs} />

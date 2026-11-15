@@ -1,5 +1,5 @@
-import { GRADE_LABELS, Grade } from '@/lib/customize/words';
-import { Link } from '@inertiajs/react';
+import { Grade } from '@/lib/customize/words';
+import GamePageHeader from './GamePageHeader';
 
 export default function Countdown({
     grade,
@@ -10,12 +10,7 @@ export default function Countdown({
 }) {
     return (
         <div>
-            <div className="flex w-full items-center justify-between border-b border-gray-400 px-12 py-4">
-                <Link href="/" className="text-2xl font-bold tracking-widest">
-                    WORD LEARNER
-                </Link>
-                <p className="text-xl">{GRADE_LABELS[grade]}</p>
-            </div>
+            <GamePageHeader grade={grade} />
 
             <div className="flex flex-col items-center justify-center py-32 text-center">
                 <p className="text-xl uppercase tracking-widest text-gray-500">

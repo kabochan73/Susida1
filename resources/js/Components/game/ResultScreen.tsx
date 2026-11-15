@@ -1,9 +1,10 @@
-import { GRADE_LABELS, Grade } from '@/lib/customize/words';
+import { Grade } from '@/lib/customize/words';
 import { Mode } from '@/lib/judge';
 import { PageProps } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import GamePageHeader from './GamePageHeader';
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error';
 
@@ -38,12 +39,7 @@ export default function ResultScreen({
 
     return (
         <div>
-            <div className="flex w-full items-center justify-between border-b border-gray-700 px-12 py-4">
-                <Link href="/" className="text-2xl font-bold tracking-widest">
-                    WORD LEARNER
-                </Link>
-                <p className="text-xl">{GRADE_LABELS[grade]}</p>
-            </div>
+            <GamePageHeader grade={grade} />
 
             <div className="mx-auto max-w-xl px-6 py-16 text-center">
                 <p className="text-2xl uppercase tracking-widest text-gray-700">
