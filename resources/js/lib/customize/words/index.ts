@@ -2,6 +2,10 @@ import { GRADE1_WORDS } from './grade1';
 import { GRADE2_WORDS } from './grade2';
 import { GRADE3_WORDS } from './grade3';
 
+// このファイルは自由に編集していいファイルです。
+// 級の数や名前(英検以外の区分にする等)を変えたいときは、ここのGrade型・WORDS_BY_GRADE・
+// GRADE_LABELSを書き換えてください。
+
 // CUSTOMIZE: meaning(表示する日本語の意味)とword(タイピングする英単語のスペル)のペア。
 // 英単語学習以外の用途(別言語・別テーマ)に使う場合もこの2フィールドの意味を入れ替えるだけで動く
 export type Word = { meaning: string; word: string };

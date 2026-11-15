@@ -1,5 +1,8 @@
 import { Word } from './index';
 
+// このファイルは自由に編集していいファイルです。
+// 単語を増やしたり、意味とスペルの組を書き換えたりして、自分の単語帳にしてください。
+
 // CUSTOMIZE: ここに単語を追加すると3級のお題に出るようになる。wordは正規スペル1パターンのみ対応
 export const GRADE3_WORDS: Word[] = [
     { meaning: '環境', word: 'environment' },

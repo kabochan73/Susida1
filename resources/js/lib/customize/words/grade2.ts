@@ -1,5 +1,8 @@
 import { Word } from './index';
 
+// このファイルは自由に編集していいファイルです。
+// 単語を増やしたり、意味とスペルの組を書き換えたりして、自分の単語帳にしてください。
+
 // CUSTOMIZE: ここに単語を追加すると4級のお題に出るようになる。wordは正規スペル1パターンのみ対応
 export const GRADE2_WORDS: Word[] = [
     { meaning: '病院', word: 'hospital' },
