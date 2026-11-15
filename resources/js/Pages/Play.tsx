@@ -1,3 +1,4 @@
+import Countdown from '@/Components/game/Countdown';
 import ResultScreen from '@/Components/game/ResultScreen';
 import TypingGame from '@/Components/game/TypingGame';
 import { useGameLoop } from '@/hooks/useGameLoop';
@@ -23,7 +24,7 @@ export default function Play({ grade, mode }: { grade: string; mode: Mode }) {
 }
 
 function PlayGame({ grade, mode }: { grade: Grade; mode: Mode }) {
-    const { state, onKeyInput } = useGameLoop(grade, mode);
+    const { state, onKeyInput, countdown } = useGameLoop(grade, mode);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -41,6 +42,8 @@ function PlayGame({ grade, mode }: { grade: Grade; mode: Mode }) {
             <Head title="Play" />
             {state.status === 'finished' ? (
                 <ResultScreen grade={grade} mode={mode} score={state.score} />
+            ) : state.status === 'idle' ? (
+                <Countdown grade={grade} countdown={countdown} />
             ) : (
                 <TypingGame state={state} />
             )}
