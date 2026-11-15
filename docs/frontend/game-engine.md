@@ -96,10 +96,10 @@ export function drawNextWord(
 export type Mode = "practice" | "challenge";
 ```
 
-- `practice`(学習モード): 日本語の意味の下に`currentWord.word`(正解の英単語)をヒントとして表示する。スコアは保存しない([02-decisions-log.md](../02-decisions-log.md))
-- `challenge`(チャレンジモード): ヒントを表示しない。ゲーム終了後、ログイン済みならスコアを保存する
+- `practice`(学習モード): 入力欄に入力済みの文字(`typedLength`分)と残りの文字(`currentWord.word`の続き)を両方表示する。残りの文字がグレー表示されるため、実質的にヒントとして機能する。スコアは保存しない([02-decisions-log.md](../02-decisions-log.md))
+- `challenge`(チャレンジモード): 入力済みの文字のみ表示し、残りの文字は表示しない(答えは見えない)。ゲーム終了後、ログイン済みならスコアを保存する
 
-選択結果は`GameState.grade` / `GameState.mode`として保持し、出題キューの作成・ヒント表示・スコア保存可否のすべてに使う。
+選択結果は`GameState.grade` / `GameState.mode`として保持し、出題キューの作成・入力欄の表示方法・スコア保存可否のすべてに使う。
 
 `Pages/Play.tsx`はマウント時に`WORDS_BY_GRADE[grade]`が存在するか確認する。存在しない級(バックエンドは級の一覧を持たないため不正な`grade`でもここまで通ってくる、[02-decisions-log.md](../02-decisions-log.md))なら`router.visit('/')`でトップページへリダイレクトする。
 

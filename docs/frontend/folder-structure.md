@@ -24,7 +24,7 @@ resources/js/
 ├── Components/
 │   ├── ui/                      Button  Field
 │   ├── home/                    LevelSelect  ModeSelect  StartGameButton
-│   ├── game/                    TypingGame  ResultScreen  Timer  QuestionCounter  ComboIndicator  HintText(学習モードの正解ヒント表示)
+│   ├── game/                    TypingGame  ResultScreen  Timer
 │   └── ranking/                 RankingSidebar(`ranking`をpropsで受け取り表示するだけ)
 ├── lib/
 │   ├── words/                   お題データ。級別ファイル+index.ts+バッグ方式のqueue.ts([frontend/game-engine.md](./game-engine.md))
