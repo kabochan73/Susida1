@@ -24,7 +24,7 @@ export default function Play({ grade, mode }: { grade: string; mode: Mode }) {
 }
 
 function PlayGame({ grade, mode }: { grade: Grade; mode: Mode }) {
-    const { state, onKeyInput, countdown } = useGameLoop(grade, mode);
+    const { state, onKeyInput, countdown, restart } = useGameLoop(grade, mode);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -41,7 +41,12 @@ function PlayGame({ grade, mode }: { grade: Grade; mode: Mode }) {
         <>
             <Head title="Play" />
             {state.status === 'finished' ? (
-                <ResultScreen grade={grade} mode={mode} score={state.score} />
+                <ResultScreen
+                    grade={grade}
+                    mode={mode}
+                    score={state.score}
+                    onRetry={restart}
+                />
             ) : state.status === 'idle' ? (
                 <Countdown grade={grade} countdown={countdown} />
             ) : (

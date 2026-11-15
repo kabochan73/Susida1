@@ -122,5 +122,10 @@ export function useGameLoop(grade: Grade, mode: Mode) {
         );
     };
 
-    return { state, onKeyInput, countdown };
+    const restart = () => {
+        setState(createInitialState(grade, mode));
+        setCountdown(COUNTDOWN_SEC);
+    };
+
+    return { state, onKeyInput, countdown, restart };
 }
