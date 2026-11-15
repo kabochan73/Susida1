@@ -2,10 +2,10 @@ import {
     COUNTDOWN_SEC,
     DURATION_SEC,
     QUESTION_TIME_LIMIT_SEC,
-} from '@/lib/game-config';
+} from '@/lib/customize/game-config';
+import { Grade } from '@/lib/customize/words';
 import { GameState, handleKeyInput, Mode } from '@/lib/judge';
-import { Grade } from '@/lib/words';
-import { createWordQueue, drawNextWord } from '@/lib/words/queue';
+import { createWordQueue, drawNextWord } from '@/lib/queue';
 import { useEffect, useRef, useState } from 'react';
 
 function createInitialState(grade: Grade, mode: Mode): GameState {

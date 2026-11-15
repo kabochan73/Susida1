@@ -1,4 +1,4 @@
-import { Grade, Word, WORDS_BY_GRADE } from './index';
+import { Grade, Word, WORDS_BY_GRADE } from './customize/words';
 
 function shuffle<T>(items: T[]): T[] {
     const result = [...items];

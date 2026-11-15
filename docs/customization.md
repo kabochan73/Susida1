@@ -4,7 +4,9 @@ Word Learnerは「誰でもgit cloneして、お題とルールを書き換え�
 
 ## カスタマイズの主目的: お題(ワード)の入れ替え
 
-配布時点では日本語の意味→英単語のスペルをタイピングする英単語学習アプリとして公開する(ハッカソン提出物、[01-overview.md](./01-overview.md))。このテンプレートで一番やりたいことは**配色やデザインの変更ではなく、お題の単語セットを自分の学びたい内容に入れ替えること**(例: TOEICの語彙に変える、別の意味↔スペルのペアに入れ替える等)。見た目のカスタマイズは目的ではないので、このガイドや`// CUSTOMIZE:`コメントも単語データ(`resources/js/lib/words/`)周りを最優先で手厚くする。
+配布時点では日本語の意味→英単語のスペルをタイピングする英単語学習アプリとして公開する(ハッカソン提出物、[01-overview.md](./01-overview.md))。このテンプレートで一番やりたいことは**配色やデザインの変更ではなく、お題の単語セットを自分の学びたい内容に入れ替えること**(例: TOEICの語彙に変える、別の意味↔スペルのペアに入れ替える等)。見た目のカスタマイズは目的ではないので、このガイドや`// CUSTOMIZE:`コメントも単語データ(`resources/js/lib/customize/words/`)周りを最優先で手厚くする。
+
+編集対象になりうるファイルは`resources/js/lib/customize/`配下にまとめてある。それ以外の`lib/`配下(`judge.ts` `queue.ts` `format.ts`)はゲームの入力判定・出題順アルゴリズムなど触る必要のないロジックなので、カスタマイズ時に読む必要はない。
 
 ## 想定する編集者: 人間本人ではなくAIエージェント
 
@@ -20,7 +22,7 @@ Word Learnerは「誰でもgit cloneして、お題とルールを書き換え�
 
 ```ts
 // CUSTOMIZE: ここに単語を追加すると5級のお題に出るようになる。wordは正規スペル1パターンのみ対応
-export const GRADE5_WORDS: Word[] = [
+export const GRADE1_WORDS: Word[] = [
   { meaning: "猫", word: "cat" },
 ];
 ```
@@ -42,9 +44,9 @@ export const BONUS_SECONDS = 1;
 
 | やりたいこと | 編集するファイル |
 |---|---|
-| **お題の単語セットを入れ替える(最優先・メインの使い方)** | `resources/js/lib/words/grade{1,2,3}.ts`([frontend/game-engine.md](./frontend/game-engine.md)) |
-| 級の区分そのものを変える(英検以外の区分にする、級の数を変える等) | `resources/js/lib/words/index.ts`の`Grade`型・`WORDS_BY_GRADE`(クライアント側だけで完結。バックエンドは級の一覧を持たないため変更不要、[02-decisions-log.md](./02-decisions-log.md)) |
-| 制限時間・コンボボーナスの条件を変える | `resources/js/lib/game-config.ts` |
+| **お題の単語セットを入れ替える(最優先・メインの使い方)** | `resources/js/lib/customize/words/grade{1,2,3}.ts`([frontend/game-engine.md](./frontend/game-engine.md)) |
+| 級の区分そのものを変える(英検以外の区分にする、級の数を変える等) | `resources/js/lib/customize/words/index.ts`の`Grade`型・`WORDS_BY_GRADE`(クライアント側だけで完結。バックエンドは級の一覧を持たないため変更不要、[02-decisions-log.md](./02-decisions-log.md)) |
+| 制限時間・コンボボーナスの条件を変える | `resources/js/lib/customize/game-config.ts` |
 
 見た目(アプリ名表示・配色・デザイン)の変更は目的外。バックエンド(認証・DB・ランキング計算)は単語セット・級の一覧に依存しないため、級を増減してもバックエンドは触らずに済む。
 

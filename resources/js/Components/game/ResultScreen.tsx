@@ -1,5 +1,5 @@
+import { GRADE_LABELS, Grade } from '@/lib/customize/words';
 import { Mode } from '@/lib/judge';
-import { GRADE_LABELS, Grade } from '@/lib/words';
 import { PageProps } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';

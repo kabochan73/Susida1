@@ -56,7 +56,7 @@ Laravel標準の`email` `email_verified_at` `remember_token`列は削除する(�
 |---|---|---|
 | id | bigserial | PK |
 | user_id | bigint | FK → users、ON DELETE CASCADE |
-| grade | varchar(20) | CHECK制約なし。どの級でプレイしたかを表す文字列で、具体的に何が有効な値かはバックエンドは知らない。「有効な級の一覧」はfrontendの`lib/words/`が唯一の正([02-decisions-log.md](../02-decisions-log.md)) |
+| grade | varchar(20) | CHECK制約なし。どの級でプレイしたかを表す文字列で、具体的に何が有効な値かはバックエンドは知らない。「有効な級の一覧」はfrontendの`lib/customize/words/`が唯一の正([02-decisions-log.md](../02-decisions-log.md)) |
 | score | integer | CHECK (score >= 0)。1プレイの完了問題数 |
 | created_at / updated_at | timestamp | `created_at`をプレイ日時として使う(`played_at`は別途持たない、[02-decisions-log.md](../02-decisions-log.md)) |
 

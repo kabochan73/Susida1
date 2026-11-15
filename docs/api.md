@@ -64,7 +64,7 @@ Inertiaページ`Play`に以下のpropsを渡す:
 
 | body | 型 | 備考 |
 |---|---|---|
-| grade | string | 20文字以内。値の一覧はバックエンドでは検証しない(`resources/js/lib/words/`が定義する級の文字列をそのまま送る) |
+| grade | string | 20文字以内。値の一覧はバックエンドでは検証しない(`resources/js/lib/customize/words/`が定義する級の文字列をそのまま送る) |
 | score | integer | 0以上 |
 
 成功: `201` + `{ score: number }`。未ログイン: `401`(frontend側はログイン済みの場合のみこのルートを呼ぶため、通常到達しない)

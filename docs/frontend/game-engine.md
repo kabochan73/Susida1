@@ -2,21 +2,23 @@
 
 ゲームロジックはすべてクライアント側(`resources/js/`、[frontend/folder-structure.md](./folder-structure.md))で完結する。サーバーに問い合わせるのはゲーム終了後のスコア保存のみ。
 
-## お題データ(`lib/words/`)
+## お題データ(`lib/customize/words/`)
 
 日本語の意味(`meaning`)を表示し、対応する英単語(`word`)のスペルをタイピングする。DB化せず静的ファイルとして持つ(本人がコードを編集してデプロイする運用。管理画面は作らない、[02-decisions-log.md](../02-decisions-log.md))。英検5級/4級/3級のように**級ごとに難易度の違う単語セット**を提供するため、カテゴリではなく級単位でファイルを分ける。
 
 ```
-lib/words/
-├── index.ts     # 級ごとにWORDS_BY_GRADEとしてexport
-├── grade1.ts    # 英検5級(易しい順の1番目)
-├── grade2.ts    # 英検4級
-├── grade3.ts    # 英検3級
-└── queue.ts     # バッグ方式の出題キュー(createWordQueue / drawNextWord)
+lib/
+├── customize/
+│   └── words/
+│       ├── index.ts     # 級ごとにWORDS_BY_GRADEとしてexport
+│       ├── grade1.ts    # 英検5級(易しい順の1番目)
+│       ├── grade2.ts    # 英検4級
+│       └── grade3.ts    # 英検3級
+└── queue.ts             # バッグ方式の出題キュー(createWordQueue / drawNextWord、触らなくていいロジック)
 ```
 
 ```ts
-// lib/words/grade1.ts
+// lib/customize/words/grade1.ts
 // CUSTOMIZE: ここに単語を追加すると5級のお題に出るようになる。wordは正規スペル1パターンのみ対応
 export const GRADE1_WORDS: Word[] = [
   { meaning: "猫", word: "cat" },
@@ -25,7 +27,7 @@ export const GRADE1_WORDS: Word[] = [
 ```
 
 ```ts
-// lib/words/index.ts
+// lib/customize/words/index.ts
 import { GRADE1_WORDS } from "./grade1";
 import { GRADE2_WORDS } from "./grade2";
 import { GRADE3_WORDS } from "./grade3";
@@ -46,7 +48,7 @@ export const WORDS_BY_GRADE: Record<Grade, Word[]> = {
 
 単語を追加するときは該当する級のファイルに1行追加するだけで済む。v1は1語につき正規スペル1パターンのみ(英米表記違い等の複数表記は対応しない)。同梱する英単語の収録内容・収録数は未確定([02-decisions-log.md](../02-decisions-log.md))。実装時に選定する。
 
-## 出題順(バッグ方式、`lib/words/queue.ts`)
+## 出題順(バッグ方式、`lib/queue.ts`)
 
 完全ランダムではなく、**その級の単語リストを1回シャッフルして使い切るまで繰り返さない「バッグ方式」**を採用する([02-decisions-log.md](../02-decisions-log.md))。同じ単語が短い間隔で何度も出る偏りを防ぎ、1ゲーム内でなるべく多くの単語に触れられるようにする。
 
@@ -122,7 +124,7 @@ type GameState = {
 };
 ```
 
-## 定数(`lib/game-config.ts`)
+## 定数(`lib/customize/game-config.ts`)
 
 ```ts
 export const DURATION_SEC = 60;

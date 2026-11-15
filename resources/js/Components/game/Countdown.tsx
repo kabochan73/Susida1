@@ -1,4 +1,4 @@
-import { GRADE_LABELS, Grade } from '@/lib/words';
+import { GRADE_LABELS, Grade } from '@/lib/customize/words';
 import { Link } from '@inertiajs/react';
 
 export default function Countdown({

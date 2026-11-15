@@ -5,8 +5,8 @@ import StartGameButton from '@/Components/home/StartGameButton';
 import RankingSidebar, {
     RankingEntry,
 } from '@/Components/ranking/RankingSidebar';
+import { Grade } from '@/lib/customize/words';
 import { Mode } from '@/lib/judge';
-import { Grade } from '@/lib/words';
 import { PageProps } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';

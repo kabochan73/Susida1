@@ -1,6 +1,6 @@
-import { BONUS_COMBO_THRESHOLD, BONUS_SECONDS } from './game-config';
-import { Grade, Word } from './words';
-import { drawNextWord } from './words/queue';
+import { BONUS_COMBO_THRESHOLD, BONUS_SECONDS } from './customize/game-config';
+import { Grade, Word } from './customize/words';
+import { drawNextWord } from './queue';
 
 // CUSTOMIZE: 学習モード(答えを見ながら練習)とチャレンジモード(答えを隠して挑戦)
 export type Mode = 'practice' | 'challenge';

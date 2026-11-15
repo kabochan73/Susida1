@@ -1,5 +1,5 @@
+import { GRADE_LABELS } from '@/lib/customize/words';
 import { GameState } from '@/lib/judge';
-import { GRADE_LABELS } from '@/lib/words';
 import { Link } from '@inertiajs/react';
 import Timer from './Timer';
 

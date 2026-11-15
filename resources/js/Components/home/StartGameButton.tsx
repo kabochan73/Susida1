@@ -1,5 +1,5 @@
+import { Grade } from '@/lib/customize/words';
 import { Mode } from '@/lib/judge';
-import { Grade } from '@/lib/words';
 import { Link } from '@inertiajs/react';
 
 export default function StartGameButton({

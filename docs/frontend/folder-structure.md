@@ -27,9 +27,11 @@ resources/js/
 │   ├── game/                    TypingGame  ResultScreen  Timer
 │   └── ranking/                 RankingSidebar(`ranking`をpropsで受け取り表示するだけ)
 ├── lib/
-│   ├── words/                   お題データ。級別ファイル+index.ts+バッグ方式のqueue.ts([frontend/game-engine.md](./game-engine.md))
-│   ├── judge.ts                  入力判定ロジック
-│   ├── game-config.ts            定数(DURATION_SEC・BONUS_*・QUESTION_TIME_LIMIT_SEC)
+│   ├── customize/                自由に編集していいファイル([customization.md](../customization.md))
+│   │   ├── words/                 お題データ。級別ファイル+Grade型・WORDS_BY_GRADEを持つindex.ts
+│   │   └── game-config.ts         定数(DURATION_SEC・BONUS_*・QUESTION_TIME_LIMIT_SEC・COUNTDOWN_SEC)
+│   ├── judge.ts                  入力判定ロジック(触らなくていいロジック)
+│   ├── queue.ts                  バッグ方式の出題キュー([frontend/game-engine.md](./game-engine.md))
 │   └── format.ts                  formatTime
 └── hooks/
     └── useGameLoop.ts

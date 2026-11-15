@@ -2,8 +2,8 @@ import Countdown from '@/Components/game/Countdown';
 import ResultScreen from '@/Components/game/ResultScreen';
 import TypingGame from '@/Components/game/TypingGame';
 import { useGameLoop } from '@/hooks/useGameLoop';
+import { Grade, isValidGrade } from '@/lib/customize/words';
 import { Mode } from '@/lib/judge';
-import { Grade, isValidGrade } from '@/lib/words';
 import { Head, router } from '@inertiajs/react';
 import { useEffect } from 'react';
 
