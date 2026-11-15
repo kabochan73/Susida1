@@ -39,7 +39,7 @@ export default function Home({
                     <h1 className="mt-2 text-4xl font-bold">
                         A typing game made just for you.
                     </h1>
-                    <p className="mt-2 text-2xl font-bold text-gray-700">
+                    <p className="mt-2 text-2xl font-bold">
                         Words make you stronger.
                     </p>
 
