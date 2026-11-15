@@ -32,12 +32,12 @@
 ## フェーズ3: ゲーム本体
 
 **フロントエンド(バックエンド接続なしで先に動かせる)**
-- [ ] 12. お題データ: `resources/js/lib/words/grade5.ts` `grade4.ts` `grade3.ts` `index.ts` `queue.ts`(英検5級/4級/3級の単語リスト選定・作成、バッグ方式の出題キュー、[frontend/game-engine.md](./frontend/game-engine.md))
-- [ ] 13. 入力判定ロジック: `resources/js/lib/judge.ts`([frontend/game-engine.md](./frontend/game-engine.md))
-- [ ] 14. `HomeController`(`/`): `grade`クエリを受けてランキングを計算し`Inertia::render('Home', [...])`。この時点ではランキングは空配列でよい
-- [ ] 15. トップページの級・モード選択: `Pages/Home.tsx` + `Components/home/`(`LevelSelect` `ModeSelect` `StartGameButton`)、選択値を引き継いで`/play?grade=&mode=`へ遷移
-- [ ] 16. `PlayController`(`/play`): `grade`必須・`mode`はenum(`practice`/`challenge`)をバリデーションし、不正なら`/`へリダイレクト。問題なければクエリの`grade` `mode`を`Inertia::render('Play', [...])`に渡す([api.md](./api.md))
-- [ ] 17. ゲーム画面: `Pages/Play.tsx`(マウント時に`WORDS_BY_GRADE[grade]`の存在確認、無ければ`/`へリダイレクト) + `Components/game/`(`TypingGame` `Timer`(mm:ss表示) `QuestionCounter` `ComboIndicator` `HintText`(学習モードのみ) `ResultScreen`)、`/play`で実際にプレイして動作確認(級・モード・タイマー表示・コンボ・ボーナス・チャレンジモードの1問7秒スキップが仕様通りか)
+- [x] 12. お題データ: `resources/js/lib/words/grade5.ts` `grade4.ts` `grade3.ts` `index.ts` `queue.ts`(英検5級/4級/3級の単語リスト選定・作成、バッグ方式の出題キュー、[frontend/game-engine.md](./frontend/game-engine.md))
+- [x] 13. 入力判定ロジック: `resources/js/lib/judge.ts`([frontend/game-engine.md](./frontend/game-engine.md))
+- [x] 14. `HomeController`(`/`): `grade`クエリを受けてランキングを計算し`Inertia::render('Home', [...])`。この時点ではランキングは空配列でよい
+- [x] 15. トップページの級・モード選択: `Pages/Home.tsx` + `Components/home/`(`LevelSelect` `ModeSelect` `StartGameButton`)、選択値を引き継いで`/play?grade=&mode=`へ遷移
+- [x] 16. `PlayController`(`/play`): `grade`必須・`mode`はenum(`practice`/`challenge`)をバリデーションし、不正なら`/`へリダイレクト。問題なければクエリの`grade` `mode`を`Inertia::render('Play', [...])`に渡す([api.md](./api.md))
+- [x] 17. ゲーム画面: `Pages/Play.tsx`(マウント時に`WORDS_BY_GRADE[grade]`の存在確認、無ければ`/`へリダイレクト) + `Components/game/`(`TypingGame` `Timer`(mm:ss表示) `QuestionCounter` `HintText`(学習モードのみ) `ResultScreen`)、`/play`で実際にプレイして動作確認(級・モード・タイマー表示・ボーナスが仕様通りか)。ComboIndicatorはdocs/03-features.mdの決定により実装しない
 
 ## フェーズ4: スコア保存・ランキング
 
