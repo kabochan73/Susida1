@@ -41,11 +41,11 @@
 
 ## フェーズ4: スコア保存・ランキング
 
-- [ ] 18. DB: `game_sessions`マイグレーション(`grade`カラム含む)、`RecordGameSession` Action([backend/folder-structure.md](./backend/folder-structure.md))
-- [ ] 19. `GameSessionController`(`POST /game-sessions`、認証必須)([api.md](./api.md))
-- [ ] 20. `HomeController`のランキング計算を実装(`game_sessions`を`grade`で絞って`user_id`でGROUP BY、上位10件、[backend/database-schema.md](./backend/database-schema.md))
-- [ ] 21. ゲーム終了時、チャレンジモードかつログイン済みなら`axios.post('/game-sessions', { grade, score })`。学習モードは保存せず「チャレンジモードで挑戦しよう」導線、チャレンジモード未ログインは「ログインするとランキングに記録されます」導線を表示([frontend/game-engine.md](./frontend/game-engine.md))
-- [ ] 22. トップページに`Components/ranking/RankingSidebar`を追加。`LevelSelect`の選択に応じて`router.reload({ only: ['grade', 'ranking'] })`でpartial reload(2カラムレイアウト、[frontend/routing.md](./frontend/routing.md))
+- [x] 18. DB: `game_sessions`マイグレーション(`grade`カラム含む)、`RecordGameSession` Action([backend/folder-structure.md](./backend/folder-structure.md))
+- [x] 19. `GameSessionController`(`POST /game-sessions`、認証必須)([api.md](./api.md))
+- [x] 20. `HomeController`のランキング計算を実装(`game_sessions`を`grade`で絞って`user_id`でGROUP BY、上位10件、[backend/database-schema.md](./backend/database-schema.md))
+- [x] 21. ゲーム終了時、チャレンジモードかつログイン済みなら`axios.post('/game-sessions', { grade, score })`。学習モードは保存せず「チャレンジモードで挑戦しよう」導線、チャレンジモード未ログインは「ログインするとランキングに記録されます」導線を表示([frontend/game-engine.md](./frontend/game-engine.md))
+- [x] 22. トップページに`Components/ranking/RankingSidebar`を追加。`LevelSelect`の選択に応じて`router.reload({ only: ['grade', 'ranking'] })`でpartial reload(2カラムレイアウト、[frontend/routing.md](./frontend/routing.md))
 
 ## フェーズ5: 仕上げ
 
