@@ -78,7 +78,7 @@ export default function Login({ status }: { status?: string }) {
                                 )
                             }
                         />
-                        <span className="ms-2 text-sm text-gray-600">
+                        <span className="ms-2 text-base text-gray-600">
                             Remember me
                         </span>
                     </label>
