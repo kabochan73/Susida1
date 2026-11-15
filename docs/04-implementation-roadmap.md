@@ -13,13 +13,13 @@
 
 ## フェーズ1: 土台
 
-- [ ] 1. リポジトリの骨組み: `git init`、`.gitignore`、README骨子
-- [ ] 2. ローカルインフラ(db)の用意: `docker-compose.yml`に`db`を追加、`docker compose up -d`で起動確認
-- [ ] 3. Laravel雛形 + Breeze(Inertia + React): `composer create-project laravel/laravel .` → `composer require laravel/breeze --dev` → `php artisan breeze:install react`
-- [ ] 4. appコンテナ: `docker-compose.yml`に`app`サービス追加、`.env.example`
-- [ ] 5. viteコンテナ: `docker-compose.yml`に`vite`サービス追加(`npm run dev`)([infra/local-dev.md](./infra/local-dev.md))
-- [ ] 6. 疎通確認: `/`にアクセスしてBreeze標準のウェルカム/ダッシュボード相当のページが表示されることを確認
-- [ ] 6.5. ルート`AGENTS.md`を作成: cloneした人のAIエージェントが[customization.md](./customization.md)と`// CUSTOMIZE:`コメント規約を見つけられるようにする([customization.md](./customization.md))
+- [x] 1. リポジトリの骨組み: `git init`、`.gitignore`、README骨子
+- [x] 2. ローカルインフラ(db)の用意: `docker-compose.yml`に`db`を追加、`docker compose up -d`で起動確認
+- [x] 3. Laravel雛形 + Breeze(Inertia + React): `composer create-project laravel/laravel .` → `composer require laravel/breeze --dev` → `php artisan breeze:install react`
+- [x] 4. appコンテナ: `docker-compose.yml`に`app`サービス追加、`.env.example`
+- [x] 5. viteコンテナ: `docker-compose.yml`に`vite`サービス追加(`npm run dev`)([infra/local-dev.md](./infra/local-dev.md))
+- [x] 6. 疎通確認: `/`にアクセスしてBreeze標準のウェルカム/ダッシュボード相当のページが表示されることを確認
+- [x] 6.5. ルート`AGENTS.md`を作成: cloneした人のAIエージェントが[customization.md](./customization.md)と`// CUSTOMIZE:`コメント規約を見つけられるようにする([customization.md](./customization.md))
 
 ## フェーズ2: 認証
 
