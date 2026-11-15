@@ -19,23 +19,20 @@ export default function TypingGame({ state }: { state: GameState }) {
             <div className="mx-auto max-w-xl px-6 py-10 text-center">
                 <Timer remainingMs={state.remainingMs} />
 
-                <hr className="my-8 border-b-2 border-gray-700" />
+                <hr className="my-8 border-b border-gray-400" />
 
                 <p className="mt-6 text-4xl font-bold">
                     {state.currentWord.meaning}
                 </p>
 
-                <div className="mt-8 border-b-2 border-gray-700 pb-4">
-                    <p className="text-2xl tracking-widest">
+                <div className="mt-8">
+                    <p className="text-3xl font-bold tracking-widest">
                         <span className="text-green-600">{typed}</span>
                         {state.mode === 'practice' && (
                             <span className="text-gray-400">{rest}</span>
                         )}
                     </p>
                 </div>
-                <p className="mt-2 text-xs uppercase tracking-widest text-gray-500">
-                    Type the word
-                </p>
             </div>
         </div>
     );
