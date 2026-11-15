@@ -14,7 +14,7 @@ export default function RankingSidebar({
             {ranking.length === 0 ? (
                 <p className="mt-4 text-lg text-gray-500">No rankings yet.</p>
             ) : (
-                <ol className="mt-4 divide-y divide-gray-200">
+                <ol className="mt-4 divide-y divide-gray-400">
                     {ranking.map((entry) => (
                         <li
                             key={entry.rank}
