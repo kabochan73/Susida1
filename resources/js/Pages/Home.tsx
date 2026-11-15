@@ -1,3 +1,4 @@
+import Header from '@/Components/Header';
 import LevelSelect from '@/Components/home/LevelSelect';
 import ModeSelect from '@/Components/home/ModeSelect';
 import StartGameButton from '@/Components/home/StartGameButton';
@@ -7,7 +8,7 @@ import RankingSidebar, {
 import { Mode } from '@/lib/judge';
 import { Grade } from '@/lib/words';
 import { PageProps } from '@/types';
-import { Head, Link, router, usePage } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
 export default function Home({
@@ -31,18 +32,7 @@ export default function Home({
         <>
             <Head title="Home" />
 
-            {auth.user && (
-                <div className="mx-auto max-w-5xl px-6 pt-6 text-right">
-                    <Link
-                        href="/logout"
-                        method="post"
-                        as="button"
-                        className="text-sm text-gray-500 underline"
-                    >
-                        ログアウト
-                    </Link>
-                </div>
-            )}
+            <Header user={auth.user} />
 
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 border-t px-6 py-10 lg:grid-cols-2">
                 <div>
