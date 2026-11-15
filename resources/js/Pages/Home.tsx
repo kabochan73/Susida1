@@ -34,7 +34,7 @@ export default function Home({
 
             <Header user={auth.user} />
 
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 border-t px-6 py-10 lg:grid-cols-4">
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 p-6 lg:grid-cols-4">
                 <div className="lg:col-span-3">
                     <h1 className="mt-2 text-4xl font-bold">
                         A typing game made just for you.
