@@ -5,7 +5,7 @@ export const DURATION_SEC = 60;
 export const BONUS_COMBO_THRESHOLD = 5;
 
 // CUSTOMIZE: ボーナスで増える秒数
-export const BONUS_SECONDS = 1;
+export const BONUS_SECONDS = 2;
 
 // CUSTOMIZE: チャレンジモードで1問に使える時間(秒)。超えると自動でスキップされる
 export const QUESTION_TIME_LIMIT_SEC = 7;
