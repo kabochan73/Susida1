@@ -25,28 +25,18 @@ class HomeController extends Controller
 
     /**
      * Top 10 for the given grade, ties broken by whoever reached that
-     * score first (see docs/backend/database-schema.md).
+     * score first (see docs/backend/database-schema.md). Every play is
+     * ranked individually, so the same user can appear more than once.
      *
      * @return array<int, array{rank: int, name: string, bestScore: int}>
      */
     private function ranking(string $grade): array
     {
         $rows = DB::select(<<<'SQL'
-            SELECT user_id, best_score, achieved_at
-            FROM (
-                SELECT
-                    user_id,
-                    score AS best_score,
-                    created_at AS achieved_at,
-                    ROW_NUMBER() OVER (
-                        PARTITION BY user_id
-                        ORDER BY score DESC, created_at ASC
-                    ) AS rn
-                FROM game_sessions
-                WHERE grade = ?
-            ) ranked
-            WHERE rn = 1
-            ORDER BY best_score DESC, achieved_at ASC
+            SELECT user_id, score AS best_score, created_at AS achieved_at
+            FROM game_sessions
+            WHERE grade = ?
+            ORDER BY score DESC, created_at ASC
             LIMIT 10
         SQL, [$grade]);
 

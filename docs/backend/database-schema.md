@@ -1,6 +1,6 @@
 # データベース設計(PostgreSQL)
 
-テーブルは実質2つ。お題の単語データはDB化せず、`resources/js/`側に静的な配列として持つ(管理機能が不要なため、[02-decisions-log.md](../02-decisions-log.md))。ランキングは`game_sessions`を`grade`で絞った上で`user_id`でグルーピングして最高スコアを取れば作れるので専用テーブルは不要。
+テーブルは実質2つ。お題の単語データはDB化せず、`resources/js/`側に静的な配列として持つ(管理機能が不要なため、[02-decisions-log.md](../02-decisions-log.md))。ランキングは`game_sessions`を`grade`で絞ってスコア順に並べれば作れるので専用テーブルは不要。
 
 ## ER概要
 
@@ -74,25 +74,14 @@ Laravel標準の`email` `email_verified_at` `remember_token`列は削除する(�
 
 ### ランキング(級ごと、上位10件固定、同点は先に達成した方が上位)
 
-単純な`MAX(score)`のGROUP BYだと、同点になったときの順序が不定になる。「同じスコアなら先に達成した人を上位にする」([02-decisions-log.md](../02-decisions-log.md))ため、ユーザーごとに自己ベストを記録した行(複数回同じベストスコアを出していれば最初の行)をウィンドウ関数で1行だけ選び出してから並べる。
+自己ベストへの絞り込みはせず、プレイ(`game_sessions`の1行)をそのまま順位付けする。そのため同じユーザーが上位10件の中に複数回登場しうる(個人で繰り返し遊ぶ用途での使いやすさを優先した仕様、[02-decisions-log.md](../02-decisions-log.md))。「同じスコアなら先に達成した人を上位にする」ため、`score DESC, created_at ASC`で並べる。
 
 ```php
 DB::select(<<<'SQL'
-    SELECT user_id, best_score, achieved_at
-    FROM (
-        SELECT
-            user_id,
-            score AS best_score,
-            created_at AS achieved_at,
-            ROW_NUMBER() OVER (
-                PARTITION BY user_id
-                ORDER BY score DESC, created_at ASC
-            ) AS rn
-        FROM game_sessions
-        WHERE grade = ?
-    ) ranked
-    WHERE rn = 1
-    ORDER BY best_score DESC, achieved_at ASC
+    SELECT user_id, score AS best_score, created_at AS achieved_at
+    FROM game_sessions
+    WHERE grade = ?
+    ORDER BY score DESC, created_at ASC
     LIMIT 10
 SQL, [$grade]);
 ```
