@@ -34,20 +34,17 @@ export default function Home({
 
             <Header user={auth.user} />
 
-            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 border-t px-6 py-10 lg:grid-cols-2">
-                <div>
-                    <p className="text-sm uppercase tracking-widest text-gray-500">
-                        Let&apos;s learn English
-                    </p>
-                    <h1 className="mt-2 text-3xl font-bold">
-                        Words make you stronger.
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 border-t px-6 py-10 lg:grid-cols-4">
+                <div className="lg:col-span-3">
+                    <h1 className="mt-2 text-4xl font-bold">
+                        A typing game made just for you.
                     </h1>
-                    <p className="mt-2 text-gray-600">
-                        タイピングで英単語を身につけよう。
+                    <p className="mt-2 text-2xl font-bold text-gray-700">
+                        Words make you stronger.
                     </p>
 
                     <div className="mt-8">
-                        <p className="text-sm uppercase tracking-widest text-gray-500">
+                        <p className="text-lg uppercase tracking-widest text-gray-700">
                             Select level
                         </p>
                         <LevelSelect
@@ -57,7 +54,7 @@ export default function Home({
                     </div>
 
                     <div className="mt-6">
-                        <p className="text-sm uppercase tracking-widest text-gray-500">
+                        <p className="text-lg uppercase tracking-widest text-gray-700">
                             Select mode
                         </p>
                         <ModeSelect value={mode} onChange={setMode} />
@@ -68,7 +65,7 @@ export default function Home({
                     </div>
                 </div>
 
-                <RankingSidebar ranking={ranking} />
+                <RankingSidebar ranking={ranking} className="lg:col-span-1" />
             </div>
         </>
     );

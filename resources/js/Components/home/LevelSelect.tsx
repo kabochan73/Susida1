@@ -17,7 +17,7 @@ export default function LevelSelect({
         <select
             value={value}
             onChange={(e) => onChange(e.target.value as Grade)}
-            className="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-2 block w-full rounded-md border-2 border-gray-300 shadow-sm hover:border-black focus:border-black focus:ring-black"
         >
             {(Object.keys(GRADE_LABELS) as Grade[]).map((grade) => (
                 <option key={grade} value={grade}>

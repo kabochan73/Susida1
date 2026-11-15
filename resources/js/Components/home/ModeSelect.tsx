@@ -27,14 +27,14 @@ export default function ModeSelect({
                     key={mode.value}
                     type="button"
                     onClick={() => onChange(mode.value)}
-                    className={`block w-full rounded-md border px-4 py-3 text-left transition ${
+                    className={`block w-full rounded-md border-2 px-4 py-3 text-left transition ${
                         value === mode.value
-                            ? 'border-gray-800 bg-gray-50'
-                            : 'border-gray-300'
+                            ? 'border-black bg-gray-50'
+                            : 'border-gray-300 hover:border-black'
                     }`}
                 >
                     <span className="block font-semibold">{mode.title}</span>
-                    <span className="block text-sm text-gray-500">
+                    <span className="block text-sm text-gray-600">
                         {mode.description}
                     </span>
                 </button>
