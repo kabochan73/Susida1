@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: word_learner
+      POSTGRES_USER: word_learner
+      POSTGRES_PASSWORD: word_learner
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U word_learner"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    image: serversideup/php:8.4-fpm-nginx
+    volumes:
+      - .:/var/www/html
+    environment:
+      SSL_MODE: "off"
+      PHP_OPCACHE_ENABLE: "0"
+      AUTORUN_ENABLED: "false"
+    ports:
+      - "8000:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  vite:
+    image: node:22-alpine
+    working_dir: /var/www/html
+    command: sh -c "npm install && npm run dev -- --host"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/node_modules
+    ports:
+      - "5173:5173"
+
+volumes:
+  db-data:
