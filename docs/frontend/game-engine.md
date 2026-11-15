@@ -9,16 +9,16 @@
 ```
 lib/words/
 ├── index.ts     # 級ごとにWORDS_BY_GRADEとしてexport
-├── grade5.ts    # 英検5級
-├── grade4.ts    # 英検4級
+├── grade1.ts    # 英検5級(易しい順の1番目)
+├── grade2.ts    # 英検4級
 ├── grade3.ts    # 英検3級
 └── queue.ts     # バッグ方式の出題キュー(createWordQueue / drawNextWord)
 ```
 
 ```ts
-// lib/words/grade5.ts
+// lib/words/grade1.ts
 // CUSTOMIZE: ここに単語を追加すると5級のお題に出るようになる。wordは正規スペル1パターンのみ対応
-export const GRADE5_WORDS: Word[] = [
+export const GRADE1_WORDS: Word[] = [
   { meaning: "猫", word: "cat" },
   { meaning: "犬", word: "dog" },
 ];
@@ -26,20 +26,20 @@ export const GRADE5_WORDS: Word[] = [
 
 ```ts
 // lib/words/index.ts
-import { GRADE5_WORDS } from "./grade5";
-import { GRADE4_WORDS } from "./grade4";
+import { GRADE1_WORDS } from "./grade1";
+import { GRADE2_WORDS } from "./grade2";
 import { GRADE3_WORDS } from "./grade3";
 
 // CUSTOMIZE: meaning(表示する日本語の意味)とword(タイピングする英単語のスペル)のペア。
 // 英単語学習以外の用途(別言語・別テーマ)に使う場合もこの2フィールドの意味を入れ替えるだけで動く
 export type Word = { meaning: string; word: string };
 
-// CUSTOMIZE: キーは英検の級("5"/"4"/"3")。別の区分(難易度ラベル等)にしたい場合はキーを変える
-export type Grade = "5" | "4" | "3";
+// CUSTOMIZE: キーは易しい順の通し番号("1"/"2"/"3")。別の区分(難易度ラベル等)にしたい場合はキーを変える
+export type Grade = "1" | "2" | "3";
 
 export const WORDS_BY_GRADE: Record<Grade, Word[]> = {
-  "5": GRADE5_WORDS,
-  "4": GRADE4_WORDS,
+  "1": GRADE1_WORDS,
+  "2": GRADE2_WORDS,
   "3": GRADE3_WORDS,
 };
 ```

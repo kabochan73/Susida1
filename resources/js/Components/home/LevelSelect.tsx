@@ -1,10 +1,4 @@
-import { Grade } from '@/lib/words';
-
-const GRADE_LABELS: Record<Grade, string> = {
-    '5': '英検5級',
-    '4': '英検4級',
-    '3': '英検3級',
-};
+import { GRADE_LABELS, Grade } from '@/lib/words';
 
 export default function LevelSelect({
     value,

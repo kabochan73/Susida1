@@ -1,7 +1,7 @@
 import { Word } from './index';
 
 // CUSTOMIZE: ここに単語を追加すると5級のお題に出るようになる。wordは正規スペル1パターンのみ対応
-export const GRADE5_WORDS: Word[] = [
+export const GRADE1_WORDS: Word[] = [
     { meaning: '猫', word: 'cat' },
     { meaning: '犬', word: 'dog' },
     { meaning: '鳥', word: 'bird' },

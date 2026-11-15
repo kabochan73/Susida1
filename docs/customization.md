@@ -42,7 +42,7 @@ export const BONUS_SECONDS = 1;
 
 | やりたいこと | 編集するファイル |
 |---|---|
-| **お題の単語セットを入れ替える(最優先・メインの使い方)** | `resources/js/lib/words/grade{5,4,3}.ts`([frontend/game-engine.md](./frontend/game-engine.md)) |
+| **お題の単語セットを入れ替える(最優先・メインの使い方)** | `resources/js/lib/words/grade{1,2,3}.ts`([frontend/game-engine.md](./frontend/game-engine.md)) |
 | 級の区分そのものを変える(英検以外の区分にする、級の数を変える等) | `resources/js/lib/words/index.ts`の`Grade`型・`WORDS_BY_GRADE`(クライアント側だけで完結。バックエンドは級の一覧を持たないため変更不要、[02-decisions-log.md](./02-decisions-log.md)) |
 | 制限時間・コンボボーナスの条件を変える | `resources/js/lib/game-config.ts` |
 

@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index(Request $request): Response
     {
-        $grade = $request->query('grade', '5');
+        $grade = $request->query('grade', '1');
 
         return Inertia::render('Home', [
             'grade' => $grade,

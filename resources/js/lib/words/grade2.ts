@@ -1,7 +1,7 @@
 import { Word } from './index';
 
 // CUSTOMIZE: ここに単語を追加すると4級のお題に出るようになる。wordは正規スペル1パターンのみ対応
-export const GRADE4_WORDS: Word[] = [
+export const GRADE2_WORDS: Word[] = [
     { meaning: '病院', word: 'hospital' },
     { meaning: '図書館', word: 'library' },
     { meaning: '公園', word: 'park' },
