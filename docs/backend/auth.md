@@ -29,21 +29,16 @@ SESSION_LIFETIME=10080  # 分(7日)。02-decisions-log.md
 
 ## ログインのレートリミット
 
-`AppServiceProvider::boot()`でログイン専用の名前付きレートリミッタを定義し、ログインルートに適用する:
+独自のRateLimiterは定義せず、**Breeze標準の`LoginRequest`に既に実装されているレートリミット機構をそのまま使う**(`app/Http/Requests/Auth/LoginRequest.php`)。`name`+IPの組み合わせで1分あたり5回まで。超えると`Lockout`イベントが発火し、バリデーションエラーとして残り待機時間を返す(`429`ではなく`422`のバリデーションエラーとして表現される点がLaravel標準のthrottleミドルウェアと異なる)。
 
 ```php
-// AppServiceProvider::boot()
-RateLimiter::for('login', function (Request $request) {
-    return Limit::perMinute(5)->by($request->ip());
-});
+public function throttleKey(): string
+{
+    return Str::transliterate(Str::lower($this->string('name')).'|'.$this->ip());
+}
 ```
 
-```php
-// routes/web.php
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('throttle:login');
-```
-
-IPアドレス単位で1分あたり5回まで。超えた場合は`429 Too Many Requests`(`Retry-After`ヘッダ付き)。登録(`/register`)にも同様の緩やかなレートリミット(`throttle:6,1`相当)をかける。
+登録(`POST /register`)には`throttle:6,1`ミドルウェアを付与する(1分あたり6回まで)。
 
 ## ルート概要
 

@@ -23,11 +23,11 @@
 
 ## フェーズ2: 認証
 
-- [ ] 7. Breezeのスキャフォールドから不要な部分を削除: メール認証・パスワードリセット関連のルート/コントローラ/ページ/マイグレーション、プロフィール編集画面([backend/auth.md](./backend/auth.md))
-- [ ] 8. DB: `users`テーブル調整(`email`列削除、`name`をUNIQUEに)
-- [ ] 9. ログインのレートリミット設定([backend/auth.md](./backend/auth.md#ログインのレートリミット))、`SESSION_LIFETIME=10080`
-- [ ] 10. `HandleInertiaRequests::share()`に`auth.user`を追加([backend/auth.md](./backend/auth.md))
-- [ ] 11. ログイン/登録ページ(`Pages/Auth/Login.tsx` `Register.tsx`)の見た目をBreezeのデフォルトから調整、ローカルで登録→ログイン→ログアウトを一通り確認
+- [x] 7. Breezeのスキャフォールドから不要な部分を削除: メール認証・パスワードリセット・パスワード確認/更新・プロフィール編集・ダッシュボードのルート/コントローラ/ページ/テスト。未使用の`laravel/sanctum`依存も削除([backend/auth.md](./backend/auth.md))
+- [x] 8. DB: `users`テーブル調整(`email`列削除、`name`をUNIQUEに)
+- [x] 9. ログインのレートリミット: Breeze標準の`LoginRequest`の仕組み(name+IPで5回/分)をそのまま利用。登録には`throttle:6,1`を追加。`SESSION_LIFETIME=10080`は.envに設定済み([backend/auth.md](./backend/auth.md#ログインのレートリミット))
+- [x] 10. `HandleInertiaRequests::share()`に`auth.user`を追加 — Breeze標準で既に実装済みのため変更不要([backend/auth.md](./backend/auth.md))
+- [x] 11. ログイン/登録ページ(`Pages/Auth/Login.tsx` `Register.tsx`)をnameベースに調整、ローカルで登録→ログイン状態共有をブラウザで確認、ログアウトは自動テストで確認(全8件パス)
 
 ## フェーズ3: ゲーム本体
 
