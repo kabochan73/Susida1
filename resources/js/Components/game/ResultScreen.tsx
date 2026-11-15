@@ -57,6 +57,10 @@ export default function ResultScreen({
                 </p>
             )}
 
+            {mode === 'challenge' && auth.user && saveState === 'saving' && (
+                <p className="mt-6 text-sm text-gray-500">保存中…</p>
+            )}
+
             {mode === 'challenge' && auth.user && saveState === 'saved' && (
                 <p className="mt-6 text-sm text-gray-600">
                     <Link href="/" className="underline">

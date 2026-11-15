@@ -6,7 +6,8 @@ import RankingSidebar, {
 } from '@/Components/ranking/RankingSidebar';
 import { Mode } from '@/lib/judge';
 import { Grade } from '@/lib/words';
-import { Head, router } from '@inertiajs/react';
+import { PageProps } from '@/types';
+import { Head, Link, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
 export default function Home({
@@ -16,6 +17,7 @@ export default function Home({
     grade: Grade;
     ranking: RankingEntry[];
 }) {
+    const { auth } = usePage<PageProps>().props;
     const [mode, setMode] = useState<Mode>('practice');
 
     const handleGradeChange = (nextGrade: Grade) => {
@@ -28,6 +30,20 @@ export default function Home({
     return (
         <>
             <Head title="Home" />
+
+            {auth.user && (
+                <div className="mx-auto max-w-5xl px-6 pt-6 text-right">
+                    <Link
+                        href="/logout"
+                        method="post"
+                        as="button"
+                        className="text-sm text-gray-500 underline"
+                    >
+                        ログアウト
+                    </Link>
+                </div>
+            )}
+
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 border-t px-6 py-10 lg:grid-cols-2">
                 <div>
                     <p className="text-sm uppercase tracking-widest text-gray-500">
