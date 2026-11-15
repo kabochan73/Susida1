@@ -1,12 +1,13 @@
 import LevelSelect from '@/Components/home/LevelSelect';
 import ModeSelect from '@/Components/home/ModeSelect';
 import StartGameButton from '@/Components/home/StartGameButton';
+import RankingSidebar, {
+    RankingEntry,
+} from '@/Components/ranking/RankingSidebar';
 import { Mode } from '@/lib/judge';
 import { Grade } from '@/lib/words';
 import { Head, router } from '@inertiajs/react';
 import { useState } from 'react';
-
-type RankingEntry = { rank: number; name: string; bestScore: number };
 
 export default function Home({
     grade,
@@ -61,32 +62,7 @@ export default function Home({
                     </div>
                 </div>
 
-                <div>
-                    <p className="text-sm uppercase tracking-widest text-gray-500">
-                        Ranking
-                    </p>
-                    <h2 className="mt-2 text-xl font-bold">Top 10 players</h2>
-
-                    {ranking.length === 0 ? (
-                        <p className="mt-4 text-gray-500">
-                            まだランキングがありません。最初のプレイヤーになろう!
-                        </p>
-                    ) : (
-                        <ol className="mt-4 divide-y divide-gray-200">
-                            {ranking.map((entry) => (
-                                <li
-                                    key={entry.rank}
-                                    className="flex items-center justify-between py-3"
-                                >
-                                    <span>
-                                        {entry.rank}. {entry.name}
-                                    </span>
-                                    <span>{entry.bestScore}</span>
-                                </li>
-                            ))}
-                        </ol>
-                    )}
-                </div>
+                <RankingSidebar ranking={ranking} />
             </div>
         </>
     );
